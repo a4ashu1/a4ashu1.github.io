@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ashu Thakur (Mr. Singh) | Portfolio & Links Hub</title>
+  <meta name="description" content="Official animated portfolio & links for Ashu Thakur (Mr. Singh). Creator of AshuTechVerse, Movie App releases, Android mods, and developer projects.">
+  <meta property="og:title" content="Ashu Thakur (Mr. Singh) | Official Portfolio">
+  <meta property="og:description" content="Explore my Movie App, join AshuTechVerse on Telegram, and connect on Instagram @a4_ashu_">
+  <meta property="og:type" content="website">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            cyber: {
+              purple: '#a855f7',
+              cyan: '#06b6d4',
+              pink: '#ec4899',
+              dark: '#08080c',
+              card: 'rgba(18, 18, 26, 0.75)'
+            }
+          },
+          fontFamily: {
+            sans: ['Space Grotesk', 'Inter', 'system-ui', '-apple-system', 'sans-serif'],
+          },
+          animation: {
+            'spin-slow': 'spin 10s linear infinite',
+            'pulse-glow': 'pulseGlow 2.5s ease-in-out infinite',
+            'float': 'float 4s ease-in-out infinite',
+            'gradient-x': 'gradientX 6s ease infinite',
+          },
+          keyframes: {
+            pulseGlow: {
+              '0%, 100%': { opacity: '0.6', transform: 'scale(1)' },
+              '50%': { opacity: '1', transform: 'scale(1.03)' }
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-8px)' }
+            },
+            gradientX: {
+              '0%, 100%': { 'background-size': '200% 200%', 'background-position': 'left center' },
+              '50%': { 'background-size': '200% 200%', 'background-position': 'right center' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+    body {
+      background-color: #07070a;
+      color: #f1f5f9;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    /* Animated Holographic Border */
+    .holo-border {
+      position: relative;
+      border-radius: 9999px;
+      padding: 3.5px;
+      background: linear-gradient(135deg, #a855f7, #06b6d4, #ec4899, #8b5cf6);
+      background-size: 300% 300%;
+      animation: holoRotate 5s linear infinite;
+    }
+    @keyframes holoRotate {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Glassmorphism Card Style */
+    .glass-card {
+      background: rgba(16, 16, 24, 0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .glass-card:hover {
+      background: rgba(24, 24, 36, 0.85);
+      border-color: rgba(168, 85, 247, 0.45);
+      transform: translateY(-4px);
+      box-shadow: 0 15px 35px -10px rgba(168, 85, 247, 0.25), 0 0 15px rgba(6, 182, 212, 0.15);
+    }
+
+    /* Featured Movie Card Glow */
+    .movie-glow {
+      position: relative;
+      background: linear-gradient(135deg, rgba(30, 20, 50, 0.8), rgba(15, 15, 25, 0.9));
+      border: 1px solid rgba(168, 85, 247, 0.4);
+      box-shadow: 0 0 30px -5px rgba(168, 85, 247, 0.3), 0 0 15px rgba(236, 72, 153, 0.2);
+    }
+    .movie-glow:hover {
+      border-color: rgba(236, 72, 153, 0.7);
+      box-shadow: 0 0 45px -5px rgba(168, 85, 247, 0.5), 0 0 25px rgba(6, 182, 212, 0.3);
+      transform: translateY(-5px);
+    }
+
+    /* Shimmer Effect on CTA Buttons */
+    .shimmer-btn {
+      position: relative;
+      overflow: hidden;
+    }
+    .shimmer-btn::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        60deg,
+        transparent 30%,
+        rgba(255, 255, 255, 0.2) 50%,
+        transparent 70%
+      );
+      transform: rotate(30deg);
+      animation: shimmerMove 3.5s infinite;
+    }
+    @keyframes shimmerMove {
+      0% { transform: translate(-100%, -100%) rotate(30deg); }
+      100% { transform: translate(100%, 100%) rotate(30deg); }
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #08080c;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #27273a;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #a855f7;
+    }
+  </style>
+</head>
+<body class="relative min-h-screen overflow-x-hidden selection:bg-purple-500 selection:text-white">
+
+  <!-- Interactive Particles Canvas Background -->
+  <canvas id="particleCanvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
+
+  <!-- Ambient Glowing Blobs -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div class="absolute -top-32 left-1/4 w-[500px] h-[500px] bg-purple-600/15 rounded-full blur-[130px] animate-pulse-glow"></div>
+    <div class="absolute top-1/2 -right-32 w-[450px] h-[450px] bg-cyan-600/10 rounded-full blur-[130px] animate-pulse-glow" style="animation-delay: 1.5s;"></div>
+    <div class="absolute -bottom-32 left-10 w-[450px] h-[450px] bg-pink-600/10 rounded-full blur-[130px] animate-pulse-glow" style="animation-delay: 3s;"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.035)_1px,transparent_1px)] bg-[size:32px_32px]"></div>
+  </div>
+
+  <!-- Top Sticky Navigation -->
+  <header class="sticky top-0 z-50 backdrop-blur-xl bg-[#08080c]/70 border-b border-white/[0.06] transition-all">
+    <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
+      <!-- Logo / Name badge -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-purple-600 via-pink-600 to-cyan-500 p-[1.5px] transition transform group-hover:scale-105">
+          <div class="w-full h-full bg-[#0d0d14] rounded-[10px] flex items-center justify-center font-bold text-xs tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-300">
+            MS
+          </div>
+        </div>
+        <div>
+          <div class="text-sm font-bold text-white tracking-wide group-hover:text-purple-300 transition">
+            Ashu Thakur <span class="text-purple-400 font-medium text-xs">(Mr. Singh)</span>
+          </div>
+          <div class="text-[11px] text-zinc-400 flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+            <span>@AshuTechVerse</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Quick Actions -->
+      <div class="flex items-center gap-2">
+        <!-- Sound Effect Toggle -->
+        <button id="soundToggle" onclick="toggleAudioFx()" title="Toggle futuristic UI sounds" class="p-2 text-zinc-400 hover:text-white bg-zinc-900/80 hover:bg-zinc-800 rounded-xl border border-white/[0.08] transition active:scale-95 text-xs flex items-center gap-1">
+          <span id="soundIcon">🔊</span>
+        </button>
+
+        <!-- Share / Copy Link -->
+        <button onclick="copyPortfolioLink()" class="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold bg-gradient-to-r from-purple-600/90 to-indigo-600/90 hover:from-purple-500 hover:to-indigo-500 text-white rounded-xl shadow-lg shadow-purple-600/20 border border-purple-400/30 transition transform hover:-translate-y-0.5 active:translate-y-0">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg>
+          <span id="navCopyText">Share Link</span>
+        </button>
+
+        <!-- QR Code -->
+        <button onclick="toggleQRModal()" title="Show QR Code" class="p-2 text-zinc-400 hover:text-white bg-zinc-900/80 hover:bg-zinc-800 rounded-xl border border-white/[0.08] transition active:scale-95">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="relative z-10 max-w-4xl mx-auto px-4 pt-6 pb-16 space-y-7">
+
+    <!-- HERO PROFILE SECTION -->
+    <section class="glass-card rounded-3xl p-6 sm:p-9 relative overflow-hidden text-center sm:text-left">
+      <!-- Glowing background burst -->
+      <div class="absolute top-0 right-0 w-80 h-80 bg-gradient-to-br from-purple-600/20 via-pink-600/10 to-transparent rounded-full blur-2xl pointer-events-none"></div>
+
+      <div class="flex flex-col sm:flex-row items-center gap-7 relative z-10">
+        
+        <!-- Live Instagram Profile Photo with Holographic Animated Halo -->
+        <div class="relative group shrink-0">
+          <div class="holo-border shadow-2xl shadow-purple-900/50">
+            <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden bg-zinc-900 relative">
+              <img 
+                id="profileAvatar" 
+                src="avatar.jpg" 
+                alt="Ashu Thakur (Mr. Singh)" 
+                class="w-full h-full object-cover object-center transition duration-500 group-hover:scale-110"
+                onerror="handleAvatarFallback(this)"
+              />
+              <!-- Subtle overlay shine -->
+              <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"></div>
+            </div>
+          </div>
+
+          <!-- Live Online Indicator -->
+          <div class="absolute bottom-1 right-2 bg-[#09090c] border-2 border-[#09090c] rounded-full p-1 shadow-lg" title="Live & Active">
+            <span class="block w-3.5 h-3.5 bg-emerald-400 rounded-full animate-ping absolute"></span>
+            <span class="block w-3.5 h-3.5 bg-emerald-400 rounded-full relative"></span>
+          </div>
+        </div>
+
+        <!-- Bio & Details -->
+        <div class="flex-1 space-y-3">
+          <div class="space-y-1">
+            <div class="flex flex-wrap items-center justify-center sm:justify-start gap-2.5">
+              <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-zinc-100 to-purple-200">
+                Ashu Thakur
+              </h1>
+              <span class="text-xl sm:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
+                (Mr. Singh)
+              </span>
+              <!-- Verified Creator Badge -->
+              <span title="Verified Creator" class="inline-flex items-center text-cyan-400">
+                <svg class="w-5 h-5 drop-shadow-[0_0_8px_rgba(6,182,212,0.8)]" fill="currentColor" viewBox="0 0 24 24">
+                  <path fill-rule="evenodd" d="M8.603 3.799A4.49 4.49 0 0112 2.25c1.357 0 2.573.6 3.397 1.549a4.49 4.49 0 013.498 1.307 4.491 4.491 0 011.307 3.497A4.49 4.49 0 0121.75 12a4.49 4.49 0 01-1.549 3.397 4.491 4.491 0 01-1.307 3.497 4.491 4.491 0 01-3.497 1.307A4.49 4.49 0 0112 21.75a4.49 4.49 0 01-3.397-1.549 4.49 4.49 0 01-3.498-1.306 4.491 4.491 0 01-1.307-3.498A4.49 4.49 0 012.25 12c0-1.357.6-2.573 1.549-3.397a4.49 4.49 0 011.307-3.497 4.49 4.49 0 013.497-1.307zm7.007 6.387a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd"></path>
+                </svg>
+              </span>
+            </div>
+            
+            <p class="text-sm font-medium text-purple-300 flex items-center justify-center sm:justify-start gap-2">
+              <span>Tech Creator & App Developer</span>
+              <span>&bull;</span>
+              <span class="text-zinc-400">Founder of AshuTechVerse</span>
+            </p>
+          </div>
+
+          <p class="text-zinc-300 text-sm sm:text-base leading-relaxed max-w-2xl">
+            Welcome to my official universe! Creator of custom Android apps, movie streaming mods, and tech solutions. Join thousands of members in the community for latest releases, exclusive apps & daily tech content.
+          </p>
+
+          <!-- Social Proof & Creator Badges -->
+          <div class="flex flex-wrap items-center justify-center sm:justify-start gap-2.5 pt-1 text-xs">
+            <span class="inline-flex items-center gap-1.5 bg-gradient-to-r from-pink-500/15 to-purple-500/15 border border-pink-500/30 text-pink-300 px-3 py-1 rounded-full font-semibold">
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              9,100+ Instagram Community
+            </span>
+
+            <span class="inline-flex items-center gap-1.5 bg-gradient-to-r from-cyan-500/15 to-blue-500/15 border border-cyan-500/30 text-cyan-300 px-3 py-1 rounded-full font-semibold">
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+              Telegram: @AshuTechVerse
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ★ FEATURED HERO SPOTLIGHT: MOVIE APP ★ -->
+    <section class="movie-glow rounded-3xl p-6 sm:p-8 relative overflow-hidden transition-all duration-300">
+      <!-- Glow particles effect -->
+      <div class="absolute -top-10 -right-10 w-44 h-44 bg-pink-500/25 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -bottom-10 -left-10 w-44 h-44 bg-purple-500/25 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="space-y-3 text-center md:text-left flex-1">
+          <!-- Animated Tag -->
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pink-500/20 border border-pink-500/40 text-pink-300 text-xs font-bold tracking-wide uppercase">
+            <span class="w-2 h-2 rounded-full bg-pink-400 animate-ping"></span>
+            🎬 Featured Release &bull; Movie App
+          </div>
+
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight flex items-center justify-center md:justify-start gap-2">
+            <span>Free Movie App</span>
+            <span class="text-xs px-2.5 py-0.5 rounded-lg bg-purple-500/30 text-purple-200 border border-purple-400/30 font-mono">
+              SinghFlix Mod
+            </span>
+          </h2>
+
+          <p class="text-zinc-300 text-sm leading-relaxed max-w-xl">
+            Stream unlimited movies, web series, and trending entertainment with zero ads, ultra-fast servers, and 4K playback. Click below to get the official app direct download link on Telegram!
+          </p>
+
+          <!-- App Features List -->
+          <div class="flex flex-wrap items-center justify-center md:justify-start gap-2 pt-1 text-xs text-zinc-300">
+            <span class="bg-black/40 border border-white/10 px-2.5 py-1 rounded-lg flex items-center gap-1.5">
+              ✨ 100% Ad-Free Experience
+            </span>
+            <span class="bg-black/40 border border-white/10 px-2.5 py-1 rounded-lg flex items-center gap-1.5">
+              🍿 4K & 1080p Ultra HD
+            </span>
+            <span class="bg-black/40 border border-white/10 px-2.5 py-1 rounded-lg flex items-center gap-1.5">
+              ⚡ Instant Telegram Direct Link
+            </span>
+          </div>
+        </div>
+
+        <!-- Big CTA Button to Telegram for Movie App -->
+        <div class="shrink-0 w-full md:w-auto">
+          <a 
+            href="https://t.me/AshuTechVerse" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            onclick="playSfx()"
+            class="shimmer-btn block text-center px-7 py-4 bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-600 hover:from-pink-500 hover:to-indigo-500 text-white font-bold text-sm sm:text-base rounded-2xl shadow-xl shadow-pink-600/30 border border-pink-400/40 transition transform hover:-translate-y-1 hover:scale-102 active:scale-98"
+          >
+            <div class="flex items-center justify-center gap-2.5">
+              <svg class="w-6 h-6 animate-bounce" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+              <span>Get Movie App On Telegram</span>
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </div>
+            <span class="block text-[11px] font-normal text-pink-200 mt-1 opacity-90">
+              Click on Telegram link for movie app link
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAIN LINKS HUB (BENTO GRID) -->
+    <section class="space-y-4">
+      <div class="flex items-center justify-between">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 animate-pulse"></span>
+          Connect & Community Links
+        </h2>
+        <span class="text-xs text-zinc-400 font-mono">Direct Access</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+        <!-- 1. INSTAGRAM PROFILE CARD -->
+        <a 
+          href="https://www.instagram.com/a4_ashu_/" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          onclick="playSfx()"
+          class="glass-card p-5 rounded-2xl flex items-center justify-between group relative overflow-hidden"
+        >
+          <!-- Gradient Hover Glow -->
+          <div class="absolute inset-0 bg-gradient-to-r from-pink-600/10 via-purple-600/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+
+          <div class="flex items-center gap-4 relative z-10">
+            <!-- Icon -->
+            <div class="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-tr from-amber-500 via-pink-600 to-purple-600 p-0.5 shadow-lg shadow-pink-600/20 group-hover:scale-105 transition">
+              <div class="w-full h-full bg-[#12121a] rounded-[14px] flex items-center justify-center text-pink-400 group-hover:text-white transition">
+                <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="font-bold text-white text-base group-hover:text-pink-300 transition">Instagram Profile</span>
+                <span class="px-2 py-0.5 text-[10px] font-bold bg-pink-500/20 text-pink-300 rounded-md border border-pink-500/30">9.1K+</span>
+              </div>
+              <p class="text-xs text-zinc-400 mt-0.5">@a4_ashu_ &bull; Follow for daily reels & stories</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-1 text-pink-400 group-hover:translate-x-1.5 transition relative z-10">
+            <span class="text-xs font-semibold hidden sm:inline">Follow</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+          </div>
+        </a>
+
+        <!-- 2. TELEGRAM CHANNEL CARD -->
+        <a 
+          href="https://t.me/AshuTechVerse" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          onclick="playSfx()"
+          class="glass-card p-5 rounded-2xl flex items-center justify-between group relative overflow-hidden"
+        >
+          <div class="absolute inset-0 bg-gradient-to-r from-cyan-600/10 via-blue-600/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+
+          <div class="flex items-center gap-4 relative z-10">
+            <div class="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-tr from-cyan-500 to-blue-600 p-0.5 shadow-lg shadow-cyan-600/20 group-hover:scale-105 transition">
+              <div class="w-full h-full bg-[#12121a] rounded-[14px] flex items-center justify-center text-cyan-400 group-hover:text-white transition">
+                <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="font-bold text-white text-base group-hover:text-cyan-300 transition">Telegram Hub</span>
+                <span class="px-2 py-0.5 text-[10px] font-bold bg-cyan-500/20 text-cyan-300 rounded-md border border-cyan-500/30">Official</span>
+              </div>
+              <p class="text-xs text-zinc-400 mt-0.5">@AshuTechVerse &bull; APKs, Movie App & Updates</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-1 text-cyan-400 group-hover:translate-x-1.5 transition relative z-10">
+            <span class="text-xs font-semibold hidden sm:inline">Join</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+          </div>
+        </a>
+
+        <!-- 3. GITHUB DEVELOPER PROFILE -->
+        <a 
+          href="https://github.com/a4ashu1" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          onclick="playSfx()"
+          class="glass-card p-5 rounded-2xl flex items-center justify-between group relative overflow-hidden"
+        >
+          <div class="absolute inset-0 bg-gradient-to-r from-purple-600/10 via-indigo-600/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+
+          <div class="flex items-center gap-4 relative z-10">
+            <div class="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-tr from-purple-500 to-indigo-600 p-0.5 shadow-lg shadow-purple-600/20 group-hover:scale-105 transition">
+              <div class="w-full h-full bg-[#12121a] rounded-[14px] flex items-center justify-center text-purple-400 group-hover:text-white transition">
+                <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path></svg>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="font-bold text-white text-base group-hover:text-purple-300 transition">GitHub Profile</span>
+                <span class="px-2 py-0.5 text-[10px] font-bold bg-purple-500/20 text-purple-300 rounded-md border border-purple-500/30">Code</span>
+              </div>
+              <p class="text-xs text-zinc-400 mt-0.5">@a4ashu1 &bull; Tools, Repos & Open Source</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-1 text-purple-400 group-hover:translate-x-1.5 transition relative z-10">
+            <span class="text-xs font-semibold hidden sm:inline">Explore</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+          </div>
+        </a>
+
+        <!-- 4. DIRECT INQUIRY & CONTACT -->
+        <a 
+          href="mailto:a4ashu1@users.noreply.github.com?subject=Inquiry%20from%20Portfolio" 
+          onclick="playSfx()"
+          class="glass-card p-5 rounded-2xl flex items-center justify-between group relative overflow-hidden"
+        >
+          <div class="absolute inset-0 bg-gradient-to-r from-emerald-600/10 via-teal-600/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+
+          <div class="flex items-center gap-4 relative z-10">
+            <div class="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-tr from-emerald-500 to-teal-600 p-0.5 shadow-lg shadow-emerald-600/20 group-hover:scale-105 transition">
+              <div class="w-full h-full bg-[#12121a] rounded-[14px] flex items-center justify-center text-emerald-400 group-hover:text-white transition">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="font-bold text-white text-base group-hover:text-emerald-300 transition">Direct Contact</span>
+                <span class="px-2 py-0.5 text-[10px] font-bold bg-emerald-500/20 text-emerald-300 rounded-md border border-emerald-500/30">Email</span>
+              </div>
+              <p class="text-xs text-zinc-400 mt-0.5">Collaborations, sponsorships & queries</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-1 text-emerald-400 group-hover:translate-x-1.5 transition relative z-10">
+            <span class="text-xs font-semibold hidden sm:inline">Message</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- TECH ARSENAL & SKILLS -->
+    <section class="glass-card rounded-3xl p-6 sm:p-7 space-y-4">
+      <div class="flex items-center justify-between">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-cyan-400"></span>
+          Engineering Arsenal & Stack
+        </h2>
+        <span class="text-xs text-zinc-500">Specializations</span>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <div class="p-3.5 rounded-xl bg-black/40 border border-white/5 space-y-1.5 hover:border-purple-500/40 transition">
+          <div class="text-xs font-bold text-purple-400 flex items-center gap-1.5">
+            <span>📱</span> Android Modding
+          </div>
+          <p class="text-[11px] text-zinc-400 leading-tight">DEX rewrites, APK decompilation & resource injection</p>
+        </div>
+
+        <div class="p-3.5 rounded-xl bg-black/40 border border-white/5 space-y-1.5 hover:border-cyan-500/40 transition">
+          <div class="text-xs font-bold text-cyan-400 flex items-center gap-1.5">
+            <span>🐍</span> Python Automation
+          </div>
+          <p class="text-[11px] text-zinc-400 leading-tight">Scripting, Web scrapers, bot automation & APIs</p>
+        </div>
+
+        <div class="p-3.5 rounded-xl bg-black/40 border border-white/5 space-y-1.5 hover:border-pink-500/40 transition">
+          <div class="text-xs font-bold text-pink-400 flex items-center gap-1.5">
+            <span>⚡</span> Bytecode Tooling
+          </div>
+          <p class="text-[11px] text-zinc-400 leading-tight">Java, Smali, Dalvik VM bytecode and patching</p>
+        </div>
+
+        <div class="p-3.5 rounded-xl bg-black/40 border border-white/5 space-y-1.5 hover:border-emerald-500/40 transition">
+          <div class="text-xs font-bold text-emerald-400 flex items-center gap-1.5">
+            <span>🛡️</span> Security & Audits
+          </div>
+          <p class="text-[11px] text-zinc-400 leading-tight">SHA-256 verification, zip-alignment & integrity gates</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FLOATING SHARE / COPY BAR -->
+    <section class="glass-card rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-purple-500/20 text-purple-300 flex items-center justify-center shrink-0">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
+        </div>
+        <div>
+          <div class="text-xs font-bold text-white">Share This Portfolio Anywhere</div>
+          <div class="text-[11px] text-zinc-400 font-mono">Add to your Instagram bio, Telegram channel, or resume</div>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2 w-full sm:w-auto">
+        <button 
+          onclick="copyPortfolioLink()" 
+          class="flex-1 sm:flex-none px-4 py-2 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white rounded-xl text-xs font-bold transition shadow-lg shadow-purple-600/30 flex items-center justify-center gap-2 active:scale-95"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+          <span id="copyBarText">Copy Portfolio Link</span>
+        </button>
+
+        <button 
+          onclick="toggleDeployModal()" 
+          class="px-3 py-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 rounded-xl text-xs font-semibold border border-white/10 transition"
+          title="Free GitHub Pages Hosting Guide"
+        >
+          🌐 Host Live
+        </button>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="text-center pt-6 space-y-2 text-zinc-500 text-xs">
+      <p class="font-medium text-zinc-400">
+        &copy; 2026 Ashu Thakur (Mr. Singh) &bull; All Rights Reserved.
+      </p>
+      <div class="flex items-center justify-center gap-4 text-zinc-500 text-[11px]">
+        <a href="https://www.instagram.com/a4_ashu_/" target="_blank" class="hover:text-pink-400 transition">Instagram</a>
+        <span>&bull;</span>
+        <a href="https://t.me/AshuTechVerse" target="_blank" class="hover:text-cyan-400 transition">Telegram</a>
+        <span>&bull;</span>
+        <a href="https://github.com/a4ashu1" target="_blank" class="hover:text-purple-400 transition">GitHub</a>
+      </div>
+    </footer>
+  </main>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 bg-[#12121c] border border-purple-500/40 text-white px-4 py-3 rounded-2xl shadow-2xl shadow-purple-950/80 flex items-center gap-3 transform translate-y-28 opacity-0 transition duration-300 pointer-events-none">
+    <div class="w-7 h-7 rounded-full bg-purple-500/20 text-purple-400 flex items-center justify-center">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+    </div>
+    <div>
+      <div class="text-xs font-bold text-white" id="toastTitle">Copied Successfully!</div>
+      <div class="text-[11px] text-zinc-400" id="toastMessage">Link copied to clipboard</div>
+    </div>
+  </div>
+
+  <!-- QR CODE MODAL -->
+  <div id="qrModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="glass-card rounded-3xl p-6 sm:p-7 max-w-sm w-full space-y-4 text-center shadow-2xl relative border border-purple-500/30">
+      <button onclick="toggleQRModal()" class="absolute top-4 right-4 text-zinc-400 hover:text-white p-1">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+
+      <h3 class="font-bold text-white text-lg">Scan Portfolio Link</h3>
+      <p class="text-xs text-zinc-400">Scan this QR code with your phone camera to instantly open Ashu Thakur's portfolio!</p>
+
+      <div class="bg-white p-3.5 rounded-2xl inline-block shadow-inner mx-auto">
+        <svg class="w-44 h-44" viewBox="0 0 100 100" fill="none">
+          <rect width="100" height="100" fill="white"/>
+          <rect x="6" y="6" width="28" height="28" fill="#09090b" rx="4"/>
+          <rect x="11" y="11" width="18" height="18" fill="white" rx="2"/>
+          <rect x="15" y="15" width="10" height="10" fill="#a855f7" rx="2"/>
+          
+          <rect x="66" y="6" width="28" height="28" fill="#09090b" rx="4"/>
+          <rect x="71" y="11" width="18" height="18" fill="white" rx="2"/>
+          <rect x="75" y="15" width="10" height="10" fill="#ec4899" rx="2"/>
+          
+          <rect x="6" y="66" width="28" height="28" fill="#09090b" rx="4"/>
+          <rect x="11" y="71" width="18" height="18" fill="white" rx="2"/>
+          <rect x="15" y="75" width="10" height="10" fill="#06b6d4" rx="2"/>
+          
+          <rect x="40" y="8" width="6" height="6" fill="#09090b"/>
+          <rect x="50" y="8" width="6" height="6" fill="#a855f7"/>
+          <rect x="40" y="18" width="6" height="6" fill="#09090b"/>
+          <rect x="50" y="18" width="6" height="6" fill="#09090b"/>
+          <rect x="16" y="42" width="6" height="6" fill="#09090b"/>
+          <rect x="26" y="42" width="6" height="6" fill="#a855f7"/>
+          
+          <rect x="38" y="38" width="24" height="24" fill="#a855f7" rx="5"/>
+          <text x="50" y="54" font-size="11" font-weight="bold" fill="white" text-anchor="middle" font-family="'Space Grotesk', sans-serif">MS</text>
+          
+          <rect x="68" y="42" width="6" height="6" fill="#09090b"/>
+          <rect x="78" y="42" width="6" height="6" fill="#ec4899"/>
+          <rect x="42" y="68" width="6" height="6" fill="#09090b"/>
+          <rect x="52" y="68" width="6" height="6" fill="#09090b"/>
+          <rect x="62" y="68" width="6" height="6" fill="#06b6d4"/>
+          <rect x="72" y="78" width="6" height="6" fill="#09090b"/>
+          <rect x="82" y="78" width="6" height="6" fill="#a855f7"/>
+        </svg>
+      </div>
+
+      <div class="text-xs text-zinc-300 font-mono bg-black/60 p-2.5 rounded-xl border border-white/10 break-all select-all">
+        https://a4ashu1.github.io
+      </div>
+
+      <button onclick="copyPortfolioLink()" class="w-full py-2.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold text-xs rounded-xl shadow-lg transition">
+        Copy Link Address
+      </button>
+    </div>
+  </div>
+
+  <!-- DEPLOYMENT GUIDE MODAL -->
+  <div id="deployModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="glass-card rounded-3xl p-6 sm:p-7 max-w-lg w-full space-y-4 shadow-2xl relative max-h-[90vh] overflow-y-auto border border-purple-500/30">
+      <button onclick="toggleDeployModal()" class="absolute top-4 right-4 text-zinc-400 hover:text-white p-1">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+
+      <h3 class="font-bold text-white text-lg flex items-center gap-2">
+        <span class="text-purple-400">🌐</span>
+        Make This Portfolio a Free Public Link
+      </h3>
+
+      <div class="space-y-3 text-xs sm:text-sm text-zinc-300">
+        <p class="text-zinc-400">Want this to be accessible anywhere in the world on a permanent free link like <code class="text-purple-300 font-mono">https://a4ashu1.github.io</code>?</p>
+
+        <div class="p-4 bg-black/60 border border-white/10 rounded-2xl space-y-2 font-mono text-xs text-purple-300">
+          <div class="text-zinc-400 text-[11px] font-sans font-semibold">Run in PowerShell / Terminal:</div>
+          <p class="text-zinc-500"># 1. Open this portfolio folder</p>
+          <p class="text-zinc-300">cd "C:\Users\ashutosh.singh\.gemini\antigravity\scratch\portfolio"</p>
+          <p class="text-zinc-500 mt-2"># 2. Push to GitHub Pages</p>
+          <p>git init</p>
+          <p>git add .</p>
+          <p>git commit -m "Launch Ashu Thakur Portfolio"</p>
+          <p>git branch -M main</p>
+          <p>git remote add origin https://github.com/a4ashu1/a4ashu1.github.io.git</p>
+          <p>git push -u origin main</p>
+        </div>
+
+        <div class="p-3 bg-purple-950/30 border border-purple-800/40 rounded-xl text-xs text-zinc-300">
+          <span class="font-bold text-purple-300">Or use Instant Vercel/Netlify:</span> Simply drag this folder to <a href="https://app.netlify.com/drop" target="_blank" class="text-cyan-400 underline">app.netlify.com/drop</a> to get a live URL in 10 seconds!
+        </div>
+      </div>
+
+      <button onclick="toggleDeployModal()" class="w-full py-2.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-200 font-semibold text-xs rounded-xl transition">
+        Got it!
+      </button>
+    </div>
+  </div>
+
+  <!-- EMBEDDED JAVASCRIPT & AUDIO FX & PARTICLES -->
+  <script>
+    // 1. Live Avatar Fallback Chain
+    function handleAvatarFallback(img) {
+      // If local avatar.jpg fails, try direct data URI or SVG placeholder
+      console.log('Avatar fallback triggered');
+      img.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 150 150"><rect width="150" height="150" fill="%231a102f"/><circle cx="75" cy="75" r="70" fill="%23a855f7" opacity="0.2"/><text x="50%" y="54%" font-size="34" font-weight="bold" fill="%23f1f5f9" text-anchor="middle" dominant-baseline="middle" font-family="sans-serif">MS</text></svg>';
+    }
+
+    // 2. Interactive Synthesized Web Audio UI Sound (Zero External Files!)
+    let audioCtx = null;
+    let soundEnabled = true;
+
+    function playSfx(freq = 520, type = 'sine', duration = 0.08) {
+      if (!soundEnabled) return;
+      try {
+        if (!audioCtx) {
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        if (audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(freq * 1.5, audioCtx.currentTime + duration);
+        gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+      } catch (e) {}
+    }
+
+    function toggleAudioFx() {
+      soundEnabled = !soundEnabled;
+      document.getElementById('soundIcon').innerText = soundEnabled ? '🔊' : '🔇';
+      showToast(soundEnabled ? 'UI Sound: ON' : 'UI Sound: OFF', 'Audio setting changed');
+      if (soundEnabled) playSfx(650, 'sine', 0.1);
+    }
+
+    // 3. Copy Link with Visual & Audio Feedback
+    function copyPortfolioLink() {
+      const link = window.location.protocol.startsWith('http')
+        ? window.location.href
+        : 'https://a4ashu1.github.io';
+
+      playSfx(880, 'triangle', 0.12);
+
+      navigator.clipboard.writeText(link).then(() => {
+        showToast('Portfolio Link Copied!', link);
+        const navText = document.getElementById('navCopyText');
+        const barText = document.getElementById('copyBarText');
+        if (navText) navText.innerText = 'Copied! ✓';
+        if (barText) barText.innerText = 'Link Copied! ✓';
+        setTimeout(() => {
+          if (navText) navText.innerText = 'Share Link';
+          if (barText) barText.innerText = 'Copy Portfolio Link';
+        }, 2200);
+      }).catch(() => {
+        showToast('Your Portfolio Link', link);
+      });
+    }
+
+    // 4. Toast Notification
+    function showToast(title, message) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastTitle').innerText = title;
+      document.getElementById('toastMessage').innerText = message;
+      toast.classList.remove('translate-y-28', 'opacity-0');
+      setTimeout(() => {
+        toast.classList.add('translate-y-28', 'opacity-0');
+      }, 3200);
+    }
+
+    // 5. Modal Controllers
+    function toggleQRModal() {
+      playSfx(440, 'sine', 0.06);
+      const m = document.getElementById('qrModal');
+      m.classList.toggle('hidden');
+      m.classList.toggle('flex');
+    }
+
+    function toggleDeployModal() {
+      playSfx(440, 'sine', 0.06);
+      const m = document.getElementById('deployModal');
+      m.classList.toggle('hidden');
+      m.classList.toggle('flex');
+    }
+
+    // 6. Interactive Particle Canvas Animation
+    (function initParticles() {
+      const canvas = document.getElementById('particleCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let width = canvas.width = window.innerWidth;
+      let height = canvas.height = window.innerHeight;
+
+      window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      });
+
+      const numParticles = Math.min(width > 768 ? 45 : 20, 50);
+      const particles = [];
+      const colors = ['#a855f7', '#ec4899', '#06b6d4', '#8b5cf6'];
+
+      for (let i = 0; i < numParticles; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.45,
+          vy: (Math.random() - 0.5) * 0.45,
+          radius: Math.random() * 1.8 + 0.8,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          alpha: Math.random() * 0.5 + 0.2
+        });
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, width, height);
+
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+
+          if (p.x < 0) p.x = width;
+          if (p.x > width) p.x = 0;
+          if (p.y < 0) p.y = height;
+          if (p.y > height) p.y = 0;
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = p.color;
+          ctx.globalAlpha = p.alpha;
+          ctx.fill();
+
+          // Connect nearby particles with subtle lines
+          for (let j = i + 1; j < particles.length; j++) {
+            const p2 = particles[j];
+            const dx = p.x - p2.x;
+            const dy = p.y - p2.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < 110) {
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.strokeStyle = p.color;
+              ctx.globalAlpha = (1 - dist / 110) * 0.15;
+              ctx.stroke();
+            }
+          }
+        }
+        ctx.globalAlpha = 1;
+        requestAnimationFrame(draw);
+      }
+      draw();
+    })();
+  </script>
+</body>
+</html>
